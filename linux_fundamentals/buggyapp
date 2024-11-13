@@ -1,0 +1,43 @@
+1-build program using g++ compiler
+2-run binary 
+3-it prints on terminal Error: File not found!
+4-use strace -c ./main.o to see how many errors and exits in which syscall
+Error: File not found!
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 40.93    0.000194           8        22           mmap
+ 20.46    0.000097          12         8           mprotect
+  7.38    0.000035           5         6         1 openat
+  5.91    0.000028           5         5           newfstatat
+  4.64    0.000022          22         1           munmap
+  3.59    0.000017           4         4           pread64
+  2.74    0.000013          13         1           write
+  2.53    0.000012           2         5           close
+  2.53    0.000012           4         3           brk
+  2.32    0.000011           2         4           read
+  1.27    0.000006           6         1           futex
+  1.27    0.000006           6         1           getrandom
+  1.05    0.000005           2         2         1 arch_prctl
+  1.05    0.000005           5         1           prlimit64
+  0.84    0.000004           4         1           set_tid_address
+  0.84    0.000004           4         1           set_robust_list
+  0.63    0.000003           3         1           rseq
+  0.00    0.000000           0         1         1 access
+  0.00    0.000000           0         1           execve
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.000474           6        69         3 total
+
+6-there is 3 errors in 3 syscall openat , arch_prctl , access
+7-run this command strace  ./main.o to see the description of this error
+arch_prctl returns -1 means an error 
+access can not find the file
+openat can not open the file as it is not exist
+
+to solve this error creat file named sample.txt in the same path of source code file
+
+
+
+
+
+
+
