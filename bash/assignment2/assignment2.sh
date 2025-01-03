@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-# Log file to store alert details
+# Log file to store alert details  
 LOG_FILE="process_alerts.log"  
 source process_monitor.conf
 # Function to check processes and send alerts if they exceed the thresholds
